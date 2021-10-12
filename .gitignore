@@ -1,0 +1,9 @@
+# package directories
+node_modules
+
+#junit results
+dist
+node_modules
+**/node_modules
+
+lerna-debug.log
