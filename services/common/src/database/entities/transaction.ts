@@ -1,11 +1,18 @@
-import { Column, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { AccountEntity } from './account';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Account } from './account';
 
-export abstract class TransactionEntity {
+@Entity('Transaction')
+export class Transaction {
   @PrimaryGeneratedColumn('uuid')
   idTransacao: string;
 
-  @ManyToOne(() => AccountEntity)
+  @ManyToOne(() => Account)
   @JoinColumn()
   idConta: string;
 

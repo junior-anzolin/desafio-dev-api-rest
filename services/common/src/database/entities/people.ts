@@ -1,6 +1,14 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { PeopleValidator } from '../../validation/people.validator';
 
-export abstract class PeopleEntity {
+@Entity('People')
+export class People {
+  constructor(data?: PeopleValidator) {
+    this.nome = data?.nome;
+    this.cpf = data?.cpf;
+    this.dataNascimento = data?.dataNascimento;
+  }
+
   @PrimaryGeneratedColumn('uuid')
   idPessoa: string;
 
@@ -11,5 +19,5 @@ export abstract class PeopleEntity {
   cpf: string;
 
   @Column({ type: 'timestamp' })
-  cpdataNascimentof: Date;
+  dataNascimento: string;
 }

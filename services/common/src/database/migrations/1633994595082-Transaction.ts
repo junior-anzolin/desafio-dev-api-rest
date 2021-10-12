@@ -1,19 +1,59 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
 export class Transaction1633994595082 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`
-            CREATE EXTENSION IF NOT EXISTS pgcrypto;
-            CREATE TABLE IF NOT EXISTS transaction (
-                idTransacao UUID NOT NULL UNIQUE DEFAULT gen_random_uuid(),
-                idConta UUID NOT NULL,
-                valor MONEY NOT NULL,
-                dataTransacao TIMESTAMP NOT NULL DEFAULT now()
-            );
-        `);
+    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
+    await queryRunner.createTable(
+      new Table({
+        name: 'Transaction',
+        columns: [
+          {
+            name: 'idTransacao',
+            type: 'uuid',
+            isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'uuid',
+            isUnique: true,
+          },
+          {
+            name: 'idConta',
+            type: 'uuid',
+            isNullable: false,
+          },
+          {
+            name: 'valor',
+            type: 'money',
+            isNullable: false,
+            default: 0,
+          },
+          {
+            name: 'dataTransacao',
+            type: 'timestamp',
+            isNullable: false,
+            default: 'now()',
+          },
+        ],
+      }),
+      true,
+    );
+
+    await queryRunner.createForeignKey(
+      'Transaction',
+      new TableForeignKey({
+        name: 'fk_account_idConta',
+        columnNames: ['idConta'],
+        referencedColumnNames: ['idConta'],
+        referencedTableName: 'Account',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query('DROP TABLE IF NOT EXISTS transaction');
+    await queryRunner.dropTable('Transaction', true, true);
   }
 }

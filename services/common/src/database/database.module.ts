@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { enviroment } from '@services/common/environment/config';
+import { Account } from './entities/account';
+import { People } from './entities/people';
+import { Transaction } from './entities/transaction';
 
 const {
   POSTGRES_HOST,
@@ -9,6 +12,8 @@ const {
   POSTGRES_PASSWORD,
   POSTGRES_DATABASE,
 } = enviroment;
+
+console.log(POSTGRES_DATABASE);
 
 @Module({
   imports: [
@@ -19,8 +24,9 @@ const {
       username: POSTGRES_USER,
       password: POSTGRES_PASSWORD,
       database: POSTGRES_DATABASE,
+      logger: 'simple-console',
       migrations: ['./migrations/*.ts'],
-      entities: ['./entities/*.entity.ts'],
+      entities: [People, Account, Transaction],
       migrationsTableName: 'migration',
     }),
   ],

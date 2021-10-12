@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
@@ -5,7 +6,8 @@ declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3020);
+  app.useGlobalPipes(new ValidationPipe());
+  await app.listen(3030);
 
   if (module.hot) {
     module.hot.accept();
