@@ -1,8 +1,9 @@
 import { registerDecorator, ValidationOptions } from 'class-validator';
+import { RemoveMaskCPF } from './remove-mask-cpf';
 
 export const ValidateCPF = (number: string) => {
   // eslint-disable-next-line prettier/prettier
-  number = number.split('.').join('').split('-').join('');
+  number = RemoveMaskCPF(number);
   let sum;
   let rest;
   sum = 0;

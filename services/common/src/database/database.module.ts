@@ -13,8 +13,6 @@ const {
   POSTGRES_DATABASE,
 } = enviroment;
 
-console.log(POSTGRES_DATABASE);
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({

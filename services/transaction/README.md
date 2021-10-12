@@ -15,8 +15,6 @@ O microsserviço 'transaction' é utilizado para realizar ações na tabela `tra
 
 - `GET`
   - `/{idConta}`: Consultar extrato de transações
-- `POST`
-  - `/`: Criar uma transação
 
 ### Comentarios e tomadas de decisão
 

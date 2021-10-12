@@ -1,5 +1,9 @@
 # Iniciar projeto em ambiente dev
 
+### APIs mapeadas no insomnia
+
+As APIs foram testadas utilizando a ferramenta [Insomnia](https://insomnia.rest/), o arquivo com as APIs já contruidas pode ser [baixado aqui](insominia-map-apis.json).
+
 ### Estrutura em monorepo
 
 ```

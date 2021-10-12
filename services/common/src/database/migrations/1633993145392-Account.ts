@@ -27,13 +27,13 @@ export class Account1633993145392 implements MigrationInterface {
           },
           {
             name: 'saldo',
-            type: 'money',
+            type: 'decimal(12,2)',
             isNullable: false,
             default: 0,
           },
           {
             name: 'limiteSaqueDiario',
-            type: 'money',
+            type: 'decimal(12,2)',
             isNullable: false,
             default: 1000,
           },
@@ -45,9 +45,8 @@ export class Account1633993145392 implements MigrationInterface {
           },
           {
             name: 'tipoConta',
-            type: 'integer',
+            type: 'varchar',
             isNullable: false,
-            default: 1,
           },
           {
             name: 'dataCriacao',

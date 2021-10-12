@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "lint": "lerna exec yarn lint",
+    "lint": "eslint \"services/**/*.ts\" --fix",
     "test": "lerna exec yarn test",
     "test:ci": "lerna exec --concurrency 1 yarn test:ci",
     "test:e2e": "lerna run --concurrency 1 test:e2e",

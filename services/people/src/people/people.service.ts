@@ -1,6 +1,8 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { People } from '@services/common/database/entities/people';
+import { PeopleOperationService } from '@services/common/people-operation/people-operation.service';
+import { RemoveMaskCPF } from '@services/common/util/remove-mask-cpf';
 import { PeopleValidator } from '@services/common/validation/people.validator';
 import { Repository } from 'typeorm';
 
@@ -9,16 +11,25 @@ export class PeopleService {
   constructor(
     @InjectRepository(People)
     private readonly __people: Repository<People>,
-  ) {}
-  async get(idPessoa: string) {
-    const people = await this.__people.findOne(idPessoa);
-    if (!people) throw new HttpException('Pessoa não encontrada', 400);
 
-    return people;
+    private readonly peopleOperationService: PeopleOperationService,
+  ) {}
+
+  async get(idPessoa: string) {
+    return await this.peopleOperationService.get(idPessoa);
   }
 
   async create(data: PeopleValidator) {
-    return await this.__people.save(new People(data));
+    const cpf = RemoveMaskCPF(data.cpf);
+    const peopleWithCpf = await this.__people.findOne({ where: { cpf: cpf } });
+
+    if (peopleWithCpf)
+      throw new HttpException(
+        'Já existe uma pessoa com esse CPF cadastrado',
+        400,
+      );
+
+    return await this.__people.save(new People({ ...data, cpf }));
   }
 
   async edit(idPessoa: string, data: PeopleValidator) {
