@@ -1,63 +1,88 @@
-# NestJS + AWS Serverless Monorepo
+### Documentação do desafio
 
-## How to Start
+Escrevi a documentação dentro da pasta docs, é possivel acessar [clicando aqui](docs/start.md)
+### Desafio
+Olá, queremos convidá-lo(a) a participar do nosso desafio de seleção.  Pronto(a) para participar? Seu trabalho será visto pelo nosso time e você receberá um feedback ao final sobre o que achamos do seu trabalho. Não é legal?
 
-Install Dependencies 
+### Sobre a oportunidade 
+A vaga é para Desenvolvedor(a), temos vagas com diversos níveis de senioridade e para cada um deles utilizaremos critérios específicos considerando este aspecto, combinado? 
+Se você for aprovad(a) nesta etapa, será convidado para uma entrevista final.
 
-```bash
-npm install
-npx lerna bootstrap
-```
+### Desafio Técnico
+  Nós trabalhamos com meios de pagamento e nada melhor do que um bom sistema para gestão de contas:
+  
+  - Pré-requisitos:
+    ```
+    * Desenvolver os recursos em API Rest que realizam operações bancárias com a entidade conta a seguir:
+    ```
+    | Contas | Tipo |
+    |-|-|
+    | idConta | Numérico |
+    | idPessoa | Numérico |
+    | saldo | Monetário |
+    | limiteSaqueDiario | Monetário |
+    | flagAtivo | Condicional |
+    | tipoConta | Numérido |
+    | dataCriacao | Data |
 
-CI/CD is setup for 3 different environments: `dev` (local), `qa` (qa), `prod` (for production).
+    ```
+    * Tabela de transações realizadas na conta
+    ```
+    | Transacoes | Tipo |
+    |-|-|
+    | idTransacao | Numérico |
+    | idConta | Numérico |
+    | valor | Monetário |
+    | dataTransacao | Data |
 
-## Services
+    ```
+    * P.S.: Não é necessário realizar operações com a tabela pessoa, mas é necessária a criação da tabela para mapeamento da relação com a conta e enviar script de criação de pelo menos uma pessoa.
+    ```
 
-- common
-- auth
-- user
+    | Pessoas | Tipo |
+    |-|-|
+    | idPessoa | Numérico |
+    | nome | Texto |
+    | cpf | Texto |
+    | dataNascimento | Data |    
 
-## R  equirements
+  - O que esperamos como escopo mínimo:
+    ```
+    * Implementar path que realiza a criação de uma conta;
+    * Implementar path que realiza operação de depósito em uma conta;
+    * Implementar path que realiza operação de consulta de saldo em determinada conta;
+    * Implementar path que realiza operação de saque em uma conta;
+    * Implementar path que realiza o bloqueio de uma conta;
+    * Implementar path que recupera o extrato de transações de uma conta;
+    ```
+  - O que será diferencial:
+    ```
+    * Implementar extrato por período;
+    * Elaborar manual de execução;
+    * Elaborar documentação;
+    * Elaborar testes.
+    ```
+    
+  - O que vamos avaliar:
+    ```
+    * Seu código; 
+    * Dockerfile ou docker-compose do serviço;
+    * Script de banco;
+    * Organização;
+    * Boas práticas;
+    * Diferenciais; 
+    ```
 
-[Nodejs](https://nodejs.org/en/) (em versão pelo menos version 11)
+  - Teste para o time de Arquitetura? 
+    ```
+    * Baseado no que foi desenvolvido nos envie uma solução da Arquitetura utilizando serviços na nuvem como a AWS (diferencial), Azure e GCP;
+    * Junto com as instruções de execução, explique qual Design Pattern você utilizou e por que o escolheu para a sua solução.
+    ```
+  
 
-[Yarn](https://yarnpkg.com/lang/en/)
-
-ARNS da AWS `awscli` Instalada e configurada: <https://aws.amazon.com/getting-started/>
-
-CircleCI [Conta](https://circleci.com/signup/)
-
-Serverless [CLI](https://serverless.com/framework/docs/getting-started/)
-
-## Repository structure
-
-This repository uses [lerna] (https://lernajs.io/) and the yarn workspace to manage its dependencies.
-All of our services must be inside the `services /` folder.
-If necessary, you can leave codes used in multiple microservices in `services / common /`.
-Typescript must be used in all services.
-
-#### Enviroment
-
-Configuration file in 'services/common/enviroment/config.ts'.
-
-#### How to use CircleCI
-
-Configure your AWS credentials in "enviroment variables"(circleci). 
-To run the build, just create or commit something
-To run the deploy to 'QA' just commit to the master.
-To run the deploy to 'PROD' just create a TAG or release.
-
-### QA Demo:
-```
-https://nax1lhc2e1.execute-api.sa-east-1.amazonaws.com/qualidade/auth/
-```
-
-## Run the tests
-
-```bash
-npm test
-```
-
-```bash
-npm coverage
-```
+### Instruções
+      1. Faça o fork do desafio;
+      2. Crie um repositório privado no seu github para o projeto e adicione como colaborador o usuário wesleyjoliveira;
+      3. Desenvolva. Você terá 7 (sete) dias a partir da data do envio do desafio; 
+      4. Após concluir seu trabalho faça um push; 
+      5. Envie um e-mail à pessoa que está mantendo o contato com você durante o processo notificando a finalização do desafio para validação.

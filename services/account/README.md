@@ -6,7 +6,7 @@ Para iniciar o projeto, após instalaçar as dependencias da pasta principal (`n
 
 ### Sobre este serviço
 
-O microserviço account é utilizado para realizar ações na tabela `account` no banco como:
+O microsserviço account é utilizado para realizar ações na tabela `account` no banco como:
 
 - Criar conta
 - Depositar na conta

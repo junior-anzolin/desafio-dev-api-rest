@@ -6,7 +6,7 @@ Para iniciar o projeto, após instalaçar as dependencias da pasta principal (`n
 
 ### Sobre este serviço
 
-O microserviço 'transaction' é utilizado para realizar ações na tabela `transaction` no banco como:
+O microsserviço 'transaction' é utilizado para realizar ações na tabela `transaction` no banco como:
 
 - Realizar uma nova transação
 - Recuperar extrato de trasaçãoes

@@ -6,7 +6,7 @@ Para iniciar o projeto, após instalar as dependencias da pasta principal (`npm 
 
 ### Sobre este serviço
 
-O microserviço people é utilizado para realizar ações na tabela `people` no banco como:
+O microsserviço people é utilizado para realizar ações na tabela `people` no banco como:
 
 - Criar pessoa
 - Visualizar pessoa
