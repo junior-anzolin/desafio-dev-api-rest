@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Transaction } from '@services/common/database/entities/transaction';
 import { IPaginationDTO } from '@services/common/types/pagination';
-import { isValid, format } from 'date-fns';
+import { isValid } from 'date-fns';
 import { Between, FindConditions, Repository } from 'typeorm';
 
 @Injectable()
