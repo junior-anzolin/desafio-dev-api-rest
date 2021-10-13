@@ -29,10 +29,12 @@ Para iniciar iniciar o seviço no local, é necessário acessar a pasta desse se
 
 ### Conexão com o banco de dados
 
-Após levantar o banco de dados, é necessário inserir as configurações do mesmo nos arquivos. Por ser um desafio e não haver um ambiente de testes e produção, não preparei o projeto para rodar as migrations em mais de um ambiente, mas isso pode ser feito.
+Após levantar o banco de dados, é necessário inserir as configurações do mesmo nos arquivos, caso tenha levantado o banco utilizando o [Docker Compose](docker.md), o banco já esta configurado. Por ser um desafio e não haver um ambiente de testes e produção, não preparei o projeto para rodar as migrations em mais de um ambiente, mas isso pode ser feito.
 
 Vamos lá. Para conexão da aplicação é necessário inserir os dados de conexão do banco no arquivo `services/common/src/environment/config.example.ts`, para configurar a conexão de produção o repositório já vem preparado com os arquivos de environment que serão manipulados no momento do deploy na lambda.
 
 Para a conexão do TypeOrm, que será utilizada no momento de rodas as migrations e criar as tabelas, é necessário alterar o arquivo `services/common/ormconfig.json`.
+
+### Migrations
 
 Para executar as migrations, basta acessar o serviço `common` no caminho `services/common` e dentro dele executar `npm run typeorm:migration:run`;
