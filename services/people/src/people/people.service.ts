@@ -44,9 +44,13 @@ export class PeopleService {
   }
 
   async delete(idPessoa: string) {
-    const people = await this.get(idPessoa);
-    await this.__people.delete(people.idPessoa);
+    try {
+      const people = await this.get(idPessoa);
+      await this.__people.delete(people.idPessoa);
 
-    return { message: 'Sucesso' };
+      return { message: 'Sucesso' };
+    } catch (_err) {
+      throw new HttpException('Não foi possivel excluir essa pessoa', 400);
+    }
   }
 }
