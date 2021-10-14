@@ -14,7 +14,7 @@ export class AccountValidator {
 
   @IsOptional()
   @IsNumber()
-  saldo: number;
+  saldo?: number;
 
   @IsOptional()
   @IsNumber()
@@ -22,5 +22,5 @@ export class AccountValidator {
 
   @IsOptional()
   @IsEnum(AccountType)
-  tipoConta: AccountType;
+  tipoConta: string;
 }

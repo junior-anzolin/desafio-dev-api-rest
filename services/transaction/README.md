@@ -25,3 +25,14 @@ O serviço 'transaction' é utilizado para realizar ações na tabela `transacti
 ### Comentarios e tomadas de decisão
 
 Para saber mais sobre a tomada de decisão pode visualizar o doc `comments`, ou [clicar aqui](../../docs/comments.md)
+
+### Testes
+
+Para executar os testes, basta executar o comando `npm run test`;
+
+A cobertura atual dos testes nesse serviço é
+| File | % Stmts | % Branch | % Funcs | % Lines |
+|----------------------------|---------|----------|---------|---------|
+| All files | 100 | 100 | 100 | 100 |  
+| transaction.controller.ts | 100 | 100 | 100 | 100 |  
+| transaction.service.ts | 100 | 100 | 100 | 100 |

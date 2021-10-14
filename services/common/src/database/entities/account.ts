@@ -13,7 +13,7 @@ import { People } from './people';
 export class Account {
   constructor(data?: AccountValidator) {
     this.idPessoa = data?.idPessoa;
-    this.saldo = data?.saldo;
+    this.saldo = data?.saldo ?? 0;
     this.limiteSaqueDiario = data?.limiteSaqueDiario;
     this.flagAtivo = true;
     this.tipoConta = data?.tipoConta ?? AccountType.CONTA_CORRENTE;
@@ -37,7 +37,7 @@ export class Account {
   flagAtivo: boolean;
 
   @Column({ type: 'varchar', default: AccountType.CONTA_CORRENTE })
-  tipoConta: AccountType;
+  tipoConta: string;
 
   @Column({ type: 'timestamp' })
   dataCriacao: Date;

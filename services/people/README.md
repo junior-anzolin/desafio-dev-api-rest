@@ -43,3 +43,14 @@ O serviço people é utilizado para realizar ações na tabela `people` no banco
 ### Comentarios e tomadas de decisão
 
 Para saber mais sobre a tomada de decisão pode visualizar o doc `comments`, ou [clicar aqui](../../docs/comments.md)
+
+### Testes
+
+Para executar os testes, basta executar o comando `npm run test`;
+
+A cobertura atual dos testes nesse serviço é
+File | % Stmts | % Branch | % Funcs | % Lines
+----------------------|---------|----------|---------|---------
+All files | 95.34 | 50 | 100 | 94.87
+people.controller.ts | 100 | 100 | 100 | 100
+people.service.ts | 92.85 | 50 | 100 | 92.3

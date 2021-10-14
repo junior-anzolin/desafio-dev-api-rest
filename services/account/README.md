@@ -39,3 +39,14 @@ O serviço account é utilizado para realizar ações na tabela `account` no ban
 ### Comentarios e tomadas de decisão
 
 Para saber mais sobre a tomada de decisão pode visualizar o doc `comments`, ou [clicar aqui](../../docs/comments.md)
+
+### Testes
+
+Para executar os testes, basta executar o comando `npm run test`;
+
+A cobertura atual dos testes nesse serviço é
+File | % Stmts | % Branch | % Funcs | % Lines
+-----------------------|---------|----------|---------|--------
+All files | 95 | 50 | 100 | 94.54
+account.controller.ts | 100 | 100 | 100 | 100
+account.service.ts | 93.02 | 50 | 100 | 92.

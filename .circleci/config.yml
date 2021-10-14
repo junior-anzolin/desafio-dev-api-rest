@@ -94,6 +94,7 @@ jobs:
       - *save_cache
       - *run_linter
       - *run_prettier
+      - *run_tests
       - *store_test_results
 
   deploy-qa:
