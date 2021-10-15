@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72% </span>
+                <span class="strong">84.84% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/50</span>
+                <span class='fraction'>28/33</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/36</span>
+                <span class='fraction'>12/18</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>33/33</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,25 +113,31 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">18x</span>
@@ -175,19 +181,22 @@ import { RemoveMaskCPF } from './remove-mask-cpf';
 export const ValidateCPF = (number: string) =&gt; {
   // eslint-disable-next-line prettier/prettier
   number = RemoveMaskCPF(number);
+  const invalidCpfs: string[] = [
+    '00000000000',
+    '11111111111',
+    '22222222222',
+    '33333333333',
+    '44444444444',
+    '55555555555',
+    '66666666666',
+    '77777777777',
+    '88888888888',
+    '99999999999',
+  ];
   let sum;
   let rest;
   sum = 0;
-  if (number == '00000000000') return false;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '11111111111') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '22222222222') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '33333333333') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '44444444444') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '55555555555') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '66666666666') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '77777777777') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '88888888888') <span class="cstat-no" title="statement not covered" >return false;</span>
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == '99999999999') <span class="cstat-no" title="statement not covered" >return false;</span>
+  if (invalidCpfs.includes(number)) return false;
 &nbsp;
   for (let i: number = 1; i &lt;= 9; i++)
     sum = sum + parseInt(number.substring(i - 1, i)) * (11 - i);
@@ -232,7 +241,7 @@ export function isValidCPF(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Oct 14 2021 14:09:57 GMT-0300 (Horário Padrão de Brasília)
+                at Fri Oct 15 2021 09:57:02 GMT-0300 (Horário Padrão de Brasília)
             </div>
         </div>
         <script src="../prettify.js"></script>

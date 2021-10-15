@@ -30,7 +30,17 @@ describe('PeopleOperationService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
   it('get people should to match object', async () => {
     expect(await service.get(peopleTest.idPessoa)).toMatchObject(peopleTest);
+  });
+
+  it('get people should to throw', async () => {
+    try {
+      await service.get('');
+      throw {};
+    } catch (err) {
+      expect(err?.response).toBe('Pessoa não encontrada');
+    }
   });
 });

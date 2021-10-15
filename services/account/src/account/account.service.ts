@@ -66,6 +66,7 @@ export class AccountService {
     await this.transactionOperationService.checkLimitWithdraw(
       account.limiteSaqueDiario,
       value,
+      idConta,
     );
 
     account.saldo = saldo;

@@ -8,6 +8,7 @@ import { PeopleService } from './people.service';
 describe('PeopleService', () => {
   let service: PeopleService;
   const idPessoaTest: string = 'a981ed16-a743-46b3-8b56-933802194742';
+  const cpfExistente: string = '61906578001';
   const pessoaTest: PeopleValidator = {
     nome: 'Sophia Sônia Alice Castro',
     cpf: '49991309632',
@@ -19,7 +20,9 @@ describe('PeopleService', () => {
   };
 
   class MockPeople {
-    findOne(_where: any) {
+    findOne(query: any) {
+      if (query?.where?.cpf === cpfExistente)
+        return { ...pessoaTest, cpf: cpfExistente };
       return null;
     }
 
@@ -28,7 +31,8 @@ describe('PeopleService', () => {
     }
 
     delete(idPessoa: string) {
-      return { idPessoa };
+      if (idPessoa === idPessoaTest) return pessoaValueTest;
+      else throw {};
     }
   }
   class MockPeopleOperationService {
@@ -63,6 +67,17 @@ describe('PeopleService', () => {
     expect(await service.create(pessoaTest)).toMatchObject(pessoaValueTest);
   });
 
+  it('create should to throw', async () => {
+    try {
+      await service.create({ ...pessoaTest, cpf: cpfExistente });
+      throw {};
+    } catch (err) {
+      expect(err?.response).toBe(
+        'Já existe uma pessoa com esse CPF cadastrado',
+      );
+    }
+  });
+
   it('edit should to match object', async () => {
     expect(await service.edit(idPessoaTest, pessoaTest)).toMatchObject(
       pessoaValueTest,
@@ -73,5 +88,14 @@ describe('PeopleService', () => {
     expect(await service.delete(idPessoaTest)).toMatchObject({
       message: 'Sucesso',
     });
+  });
+
+  it('delete should to throw', async () => {
+    try {
+      await service.delete('');
+      throw {};
+    } catch (err) {
+      expect(err?.response).toBe('Não foi possivel excluir essa pessoa');
+    }
   });
 });

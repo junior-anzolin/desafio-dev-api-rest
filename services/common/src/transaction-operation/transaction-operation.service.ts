@@ -16,7 +16,7 @@ export class TransactionOperationService {
     return await this.__transaction.save(new Transaction(data));
   }
 
-  async checkLimitWithdraw(limit: number, value: number) {
+  async checkLimitWithdraw(limit: number, value: number, idConta: string) {
     let { sum: transactionsDay } = await this.__transaction
       .createQueryBuilder('T')
       .select('SUM(T.valor)')
@@ -26,10 +26,12 @@ export class TransactionOperationService {
           new Date(`${Today()} 23:59:59`),
         ),
         valor: LessThan(0),
+        idConta,
       })
       .getRawOne();
 
-    if (transactionsDay) transactionsDay = -parseFloat(transactionsDay);
+    if (transactionsDay)
+      transactionsDay = Math.abs(parseFloat(transactionsDay));
     else transactionsDay = null;
     limit = parseFloat(limit.toString());
 

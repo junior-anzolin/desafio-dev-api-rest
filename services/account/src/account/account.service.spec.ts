@@ -1,3 +1,4 @@
+import { HttpException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Account } from '@services/common/database/entities/account';
@@ -22,7 +23,9 @@ describe('AccountService', () => {
   class MockAccount {
     findOne(idConta: string) {
       if (idConta === idContaTestComSaldo) return { ...contaTest, idConta };
-      else return { ...contaTest, saldo: 0 };
+      else if (idConta === idContaTestSemSaldo)
+        return { ...contaTest, saldo: 0 };
+      else return null;
     }
     save(_entity: Account) {
       return contaTest;
@@ -34,11 +37,11 @@ describe('AccountService', () => {
     }
   }
   class MockTransactionOperationService {
-    create(data: any) {
+    create(_data: any) {
       return {};
     }
 
-    checkLimitWithdraw(limit: number, value: number) {
+    checkLimitWithdraw(_limit: number, _value: number, _idConta: string) {
       return true;
     }
   }
@@ -69,6 +72,15 @@ describe('AccountService', () => {
     expect(await service.get(idContaTestComSaldo)).toMatchObject(contaTest);
   });
 
+  it('get should to throw', async () => {
+    try {
+      await service.get('');
+      throw {};
+    } catch (err) {
+      expect(err?.response).toBe('Conta não encontrada ou desativada');
+    }
+  });
+
   it('balance should to match object', async () => {
     expect(await service.balance(idContaTestComSaldo)).toMatchObject({
       saldo: contaTest.saldo,
@@ -97,7 +109,27 @@ describe('AccountService', () => {
     );
   });
 
+  it('withdraw should to throw', async () => {
+    try {
+      await service.withdraw(idContaTestSemSaldo, 10);
+      throw {};
+    } catch (err) {
+      expect(err?.response).toBe('Saldo insulficiente');
+    }
+  });
+
   it('block should to match object', async () => {
     expect(await service.block(idContaTestSemSaldo)).toMatchObject(contaTest);
+  });
+
+  it('block should to throw', async () => {
+    try {
+      await service.block(idContaTestComSaldo);
+      throw {};
+    } catch (err) {
+      expect(err?.response).toBe(
+        'É necessário zerar o saldo da conta antes de bloquear',
+      );
+    }
   });
 });

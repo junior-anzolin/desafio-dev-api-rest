@@ -4,19 +4,22 @@ import { RemoveMaskCPF } from './remove-mask-cpf';
 export const ValidateCPF = (number: string) => {
   // eslint-disable-next-line prettier/prettier
   number = RemoveMaskCPF(number);
+  const invalidCpfs: string[] = [
+    '00000000000',
+    '11111111111',
+    '22222222222',
+    '33333333333',
+    '44444444444',
+    '55555555555',
+    '66666666666',
+    '77777777777',
+    '88888888888',
+    '99999999999',
+  ];
   let sum;
   let rest;
   sum = 0;
-  if (number == '00000000000') return false;
-  if (number == '11111111111') return false;
-  if (number == '22222222222') return false;
-  if (number == '33333333333') return false;
-  if (number == '44444444444') return false;
-  if (number == '55555555555') return false;
-  if (number == '66666666666') return false;
-  if (number == '77777777777') return false;
-  if (number == '88888888888') return false;
-  if (number == '99999999999') return false;
+  if (invalidCpfs.includes(number)) return false;
 
   for (let i: number = 1; i <= 9; i++)
     sum = sum + parseInt(number.substring(i - 1, i)) * (11 - i);

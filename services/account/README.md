@@ -45,8 +45,8 @@ Para saber mais sobre a tomada de decisão pode visualizar o doc `comments`, ou 
 Para executar os testes, basta executar o comando `npm run test`;
 
 A cobertura atual dos testes nesse serviço é
-File | % Stmts | % Branch | % Funcs | % Lines
------------------------|---------|----------|---------|--------
-All files | 95 | 50 | 100 | 94.54
-account.controller.ts | 100 | 100 | 100 | 100
-account.service.ts | 93.02 | 50 | 100 | 92.
+| File | % Stmts | % Branch | % Funcs | % Lines |
+|------------------------|---------|----------|---------|---------|
+| All files | 100 | 100 | 100 | 100 |
+| account.controller.ts | 100 | 100 | 100 | 100 |
+| account.service.ts | 100 | 100 | 100 | 100 |
